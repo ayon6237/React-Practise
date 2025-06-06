@@ -1,0 +1,36 @@
+import React, { useState } from 'react'
+
+const App = () => {
+  const [email,setEmail]=useState("");
+  const [password,setPass]=useState("");
+  
+  const handlepasschange=(event)=>{
+    setPass(event.target.value)
+  }
+  const handleSUbmit=(event)=>{
+    event.preventDefault();
+    const info={
+      email,password
+    }
+    console.log(info)
+  }
+  return (
+    <div>
+      <h1>Restration</h1>
+      <form onSubmit={handleSUbmit}>
+        <label>Email : </label>
+        <input type="email" value={email} onChange={handleemailchange}/> 
+        <br/>
+        <br/>
+        <label>Password : </label>
+        <input type="password" value={password} onChange={handlepasschange}/>
+        <br/>
+        <br/>
+        <button type='submit'>Submit</button>
+
+      </form>
+    </div>
+  )
+}
+
+export default App
