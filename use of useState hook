@@ -1,0 +1,30 @@
+import React, { useState } from 'react'
+
+const App = () => {
+  const [count,setCount] = useState(0);
+  const handleClick = ()=>{
+    setCount((prev)=>{
+      return prev+1
+    })
+  }
+  const handleMinusClick = ()=>{
+    setCount((prev)=>{
+      return prev-1
+    })
+  }
+  const handleReset =()=>{
+    setCount((count)=>{
+      return count=0
+    })
+  }
+   return (
+    <div>
+      <h1>Count : {count}</h1>
+      <button onClick={handleClick}>+</button>
+      <button onClick={handleMinusClick}>-</button>
+      <button onClick={handleReset}>reset</button>
+    </div>
+  )
+}
+
+export default App
