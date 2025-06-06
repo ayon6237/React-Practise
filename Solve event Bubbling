@@ -1,0 +1,21 @@
+import React from 'react'
+
+const App = () => {
+  const parentClick=()=>{
+    console.log("Parent is clicked")
+  }
+  const childClick=(event)=>{
+    event.stopPropagation();
+    console.log("Child is clicked")
+  }
+  return (
+    <div>
+      <div className='parent' onClick={parentClick}>
+        Parent
+        <div className='child' onClick={childClick}>Child</div>
+      </div>
+    </div>
+  )
+}
+
+export default App
