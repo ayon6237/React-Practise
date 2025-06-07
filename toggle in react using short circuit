@@ -1,0 +1,19 @@
+import React, { useState } from 'react'
+
+const App = () => {
+
+  const [isShow,setIsshow]=useState(false);
+  const handleClick=()=>{
+    setIsshow(!isShow)
+  }
+
+  return (
+    <div>
+      {isShow && <p>Vero dolore duo et accusam stet. Consetetur sed ea labore tempor. Consetetur gubergren ut elitr rebum aliquyam vero et clita, duo magna ipsum consetetur clita justo. Erat gubergren lorem lorem clita voluptua. Invidunt nonumy sit dolores takimata. Lorem ipsum ut et nonumy, at sea dolor ipsum est vero eirmod at takimata, kasd sit rebum ipsum dolore sit amet eos, elitr eos vero kasd no. Kasd clita lorem ipsum nonumy. Ea est magna eirmod eos ipsum duo aliquyam. Eos eos vero ipsum tempor ea amet lorem, amet consetetur voluptua erat et et sit. Justo rebum takimata nonumy vero. Invidunt sit et.</p>}
+      
+      <button onClick={handleClick}>{isShow?"Hide":"Show"}</button>
+    </div>
+  )
+}
+
+export default App
