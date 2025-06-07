@@ -1,0 +1,55 @@
+import React from 'react'
+import {useFormik} from 'formik'
+import * as yup from 'yup';
+
+const App = () => {
+
+  const formik = useFormik({
+    initialValues:{
+      email:'',
+      password:''
+    },
+    validationSchema:yup.object(
+      {
+      email:yup.string().email(),
+      password:yup.string().min(3).max(5)
+    }
+    ),
+    onSubmit: (values,{resetForm})=>{
+      console.log(values);
+      resetForm({values:""})
+    }
+  })
+
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <label>Email : </label>
+      <input 
+      type="email"
+      name='email'
+      value={formik.values.email}
+      onChange={formik.handleChange}
+      />
+      <br/>
+      {formik.errors.email && <span style={{color:"red"}}>{formik.errors.email}</span>}
+      <br/>
+
+      <label>Password : </label>
+      <input 
+      type="password" 
+      name='password'
+      onChange={formik.handleChange}
+      value={formik.values.password}
+      />
+      <br/>
+       {formik.errors.password && <span style={{color:"red"}}>{formik.errors.password}</span>}
+      <br/>
+
+      <button type="submit">Submit</button>
+
+    </form>
+  )
+}
+
+export default App
