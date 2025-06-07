@@ -1,0 +1,44 @@
+import React from 'react'
+import {useFormik} from 'formik'
+
+const App = () => {
+
+  const formik = useFormik({
+    initialValues:{
+      email:'',
+      password:''
+    },
+    onSubmit: (values,{resetForm})=>{
+      console.log(values);
+      resetForm({values:""})
+    }
+  })
+
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <label for="email">Email : </label>
+      <input 
+      type="email"
+      name='email'
+      value={formik.values.email}
+      onChange={formik.handleChange}
+      />
+      <br/>
+
+      <label for="password">Password : </label>
+      <input 
+      type="password" 
+      name='password'
+      onChange={formik.handleChange}
+      value={formik.values.password}
+      />
+      <br/>
+
+      <button type="submit">Submit</button>
+
+    </form>
+  )
+}
+
+export default App
