@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from 'react'
+
+
+
+const App = () => {
+
+  const [value,setValue]=useState("");
+  const [error,setError]=useState(false);
+
+  useEffect(()=>{
+    if(value.length < 3){
+      setError(true)
+    }else{
+      setError(false)
+    }
+  },[value])
+
+  const handleChange =(e)=>{
+    setValue(e.target.value);
+  }
+
+  return (
+    <form>
+      <input 
+      type="text" 
+      name='text'
+      onChange={handleChange}
+      value={value}
+      style={{backgroundColor:error?'red':'green'}}
+        />
+    </form>
+  )
+}
+
+export default App
