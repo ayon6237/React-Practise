@@ -1,0 +1,63 @@
+//Blog.js
+import React  from 'react'
+
+import { useNavigate,useLocation } from 'react-router-dom'
+const Blog = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    
+  return (
+    <div>
+        <h1>{location.state.title}</h1>
+        <p>{location.state.body.slice(0,50)}</p>
+        <p>{location.state.body.slice(51,500)}</p>
+        <button onClick={()=>navigate("/about")}>Go back</button>
+    </div>
+  )
+}
+
+export default Blog
+
+//About.js
+import React,{useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+
+
+import data from '../DummyData'
+import './About.css'
+const About = () => {
+
+  //truncate text
+  const truncate =(data,num)=>{
+    if(data.length>num){
+      return data.slice(0,num)+"..."
+    }else{
+      return data
+    }
+  }
+    const navigate = useNavigate();
+    const navigateTohomePage=()=>{
+        navigate("/");
+    }
+
+    const [blogdata,setblogdata]=useState(data);
+    
+  return (
+    <div className='blogData'>
+      {blogdata.map((data)=>{
+        const {id,title,body}=data;
+        return <section className='section' key={id}>
+          <h2>{title}</h2>
+          <p>{truncate(body,100)}</p>
+          <Link to={title} state={{id,title,body}}>Learn more</Link>
+        </section>
+      })}
+      <br/>
+      <br/>
+      <br/>
+      <button onClick={navigateTohomePage}>Go to Home Page</button>
+    </div>
+  )
+}
+
+export default About
